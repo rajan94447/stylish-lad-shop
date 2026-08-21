@@ -17,7 +17,7 @@ export const Route = createFileRoute("/account")({
       { property: "og:description", content: "Orders, wishlist and cart in one place." },
     ],
   }),
-  component: Account;
+  component: Account,
 });
 
 function Account() {
