@@ -65,8 +65,8 @@ export function ProductCard({ product }: { product: Product }) {
               onClick={() => {
                 addToCart(
                   product.id,
-                  product.sizes[Math.floor(product.sizes.length / 2)],
-                  product.colors[0].name,
+                  product.sizes[Math.floor(product.sizes.length / 2)]!,
+                  product.colors[0]!.name,
                 );
                 toast.success("Added to cart");
               }}

@@ -48,7 +48,7 @@ function ProductDetail() {
 
   const [image, setImage] = useState(0);
   const [size, setSize] = useState<string | null>(null);
-  const [color, setColor] = useState(product.colors[0].name);
+  const [color, setColor] = useState(product.colors[0]!.name);
   const [qty, setQty] = useState(1);
 
   const wished = isWishlisted(product.id);

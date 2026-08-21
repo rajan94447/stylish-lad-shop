@@ -25,13 +25,15 @@ import {
 } from "@/lib/products";
 import { cn } from "@/lib/utils";
 
-type ShopSearch = { q?: string; category?: string };
+type ShopSearch = { q?: string | undefined; category?: string | undefined };
 
 export const Route = createFileRoute("/shop")({
   validateSearch: (search: Record<string, unknown>): ShopSearch => ({
-    q: typeof search.q === "string" && search.q ? search.q : undefined,
+    q: typeof search["q"] === "string" && search["q"] ? (search["q"] as string) : undefined,
     category:
-      typeof search.category === "string" && search.category ? search.category : undefined,
+      typeof search["category"] === "string" && search["category"]
+        ? (search["category"] as string)
+        : undefined,
   }),
   head: () => ({
     meta: [
@@ -79,7 +81,7 @@ function Shop() {
       if (sizes.length && !p.sizes.some((s) => sizes.includes(s))) return false;
       if (colors.length && !p.colors.some((c) => colors.includes(c.name))) return false;
       if (brandList.length && !brandList.includes(p.brand)) return false;
-      if (p.price < price[0] || p.price > price[1]) return false;
+      if (p.price < price[0]! || p.price > price[1]!) return false;
       return true;
     });
 
@@ -196,7 +198,7 @@ function Shop() {
           onValueChange={setPrice}
         />
         <p className="mt-3 text-sm text-muted-foreground">
-          {formatPrice(price[0])} — {formatPrice(price[1])}
+          {formatPrice(price[0]!)} — {formatPrice(price[1]!)}
         </p>
       </div>
 

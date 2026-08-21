@@ -136,8 +136,8 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       moveToCart: (productId) => {
         const product = products.find((p) => p.id === productId);
         if (!product) return;
-        const size = product.sizes[Math.floor(product.sizes.length / 2)];
-        const color = product.colors[0].name;
+        const size = product.sizes[Math.floor(product.sizes.length / 2)]!;
+        const color = product.colors[0]!.name;
         const id = `${productId}__${size}__${color}`;
         setCart((prev) =>
           prev.find((i) => i.id === id)

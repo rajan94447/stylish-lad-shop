@@ -24,8 +24,8 @@ export function QuickView({
   onOpenChange: (open: boolean) => void;
 }) {
   const { addToCart } = useStore();
-  const [size, setSize] = useState(product.sizes[Math.floor(product.sizes.length / 2)]);
-  const [color, setColor] = useState(product.colors[0].name);
+  const [size, setSize] = useState(product.sizes[Math.floor(product.sizes.length / 2)]!);
+  const [color, setColor] = useState(product.colors[0]!.name);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
